@@ -2,7 +2,7 @@
   <div class="home-swiper">
     <mt-swipe :auto="4000">
       <mt-swipe-item v-for="(list, index) in swiper" :key="index">
-        <img :src="list.img"/>
+        <img :src="list.img" />
       </mt-swipe-item>
     </mt-swipe>
   </div>
@@ -30,11 +30,11 @@ export default {
 
 <style lang="scss" scoped>
 .home-swiper {
-  height: 5.14rem;
+  height: 6.5rem;
   margin-top: 1px;
   img {
     width: 100%;
-    height: 5.14rem;
+    height: 6.5rem;
   }
 }
 </style>
