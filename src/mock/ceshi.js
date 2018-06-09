@@ -1405,7 +1405,7 @@ export const data  = {
 			],
 			"right":[
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id": 1,
 							"img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/71/4171_1496689409434hd_530x530.png",
@@ -1469,7 +1469,7 @@ export const data  = {
 					]
 				},
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id": 4,
 							"img": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1496689781362hd_530x530.png",
@@ -1478,7 +1478,7 @@ export const data  = {
 					]
 				},
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id": 1,
 							"img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/71/4171_1496689409434hd_530x530.png",
@@ -1496,7 +1496,7 @@ export const data  = {
 					]
 				},
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id": 3,
 							"img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/95/4495_1509454710945hd_530x530.png",
@@ -1515,7 +1515,7 @@ export const data  = {
 					]
 				},
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id":8,
 							"img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/20/4020_1481558694236_530x530.png",
@@ -1524,7 +1524,7 @@ export const data  = {
 					]
 				},
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id":11,
 							"img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/83/4183_1482921083765_530x530.png",
@@ -1538,7 +1538,7 @@ export const data  = {
 					]
 				},
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id":9,
 							"img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/82/1882_1481558960471_530x530.png",
@@ -1547,7 +1547,7 @@ export const data  = {
 					]
 				},
 				{
-					"rigth_data":[
+					"right_data":[
 						{
 							"id":7,
 							"img": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972514378hd_250x250.png",

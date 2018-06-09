@@ -21,6 +21,14 @@ const routes = [
     meta: {
       title: '主页'
     }
+  },
+  {
+    path: '/classify',
+    name: 'classify',
+    component: _import('classify/index'),
+    meta: {
+      title: '分类'
+    }
   }
 ];
 

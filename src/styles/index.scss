@@ -1,5 +1,9 @@
 @import './reset.scss';
 
+::-webkit-scrollbar {/*隐藏滚轮*/
+  display: none;
+}
+
 // mint-ui
 .swipe {
   height: 5.14rem;
