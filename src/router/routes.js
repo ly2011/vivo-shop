@@ -45,6 +45,14 @@ const routes = [
     meta: {
       title: '资讯详情'
     }
+  },
+  {
+    path: '/my',
+    name: 'my',
+    component: _import('my/index'),
+    meta: {
+      title: '个人中心'
+    }
   }
 ];
 
