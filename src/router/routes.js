@@ -37,6 +37,14 @@ const routes = [
     meta: {
       title: '动态'
     }
+  },
+  {
+    path: '/news_detail',
+    name: 'news_detail',
+    component: _import('news/detail'),
+    meta: {
+      title: '资讯详情'
+    }
   }
 ];
 

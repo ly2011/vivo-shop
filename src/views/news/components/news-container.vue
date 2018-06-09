@@ -29,9 +29,10 @@ export default {
   },
   methods: {
     goDetails(id) {
-      console.log('====================================');
-      console.log('id: ', id);
-      console.log('====================================');
+      this.$router.push({
+        path: 'news_detail',
+        query: {id}
+      })
     }
   }
 }
