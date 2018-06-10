@@ -53,6 +53,14 @@ const routes = [
     meta: {
       title: '个人中心'
     }
+  },
+  {
+    path: '/product',
+    name:'product',
+    component: _import('product/index'),
+    meta: {
+      title: '商品详情'
+    }
   }
 ];
 

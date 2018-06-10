@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import { data } from '../../mock/ceshi.js';
+import { data } from '@/mock/ceshi.js';
 
 import HomeSwipe from './components/home-swipe';
 import HomeList from './components/home-list';
 import HomeContainer from './components/home-container';
-import HomeFooter from '@/components/footer'
+import HomeFooter from '@/components/footer';
 export default {
   components: {
     HomeSwipe,

@@ -38,7 +38,14 @@ export default {
   },
   methods: {
     // eslint-disable-next-line
-    toProduct(id) {}
+    toProduct(id) {
+      this.$router.push({
+        path: 'product',
+        query: {
+          id
+        }
+      });
+    }
   }
 };
 </script>
