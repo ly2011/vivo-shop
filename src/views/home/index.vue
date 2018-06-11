@@ -38,12 +38,6 @@ export default {
   },
   methods: {
     fetchData() {
-      // eslint-disable-next-line
-      // this.$http.get('/static/ceshi.json').then(res => {
-      // console.log('res: ', res);
-      // this.todos = res.data.data.home;
-      // });
-
       const { data: { home } } = data || [];
       this.todos = home;
     }

@@ -37,7 +37,6 @@ export default {
     }
   },
   methods: {
-    // eslint-disable-next-line
     toProduct(id) {
       this.$router.push({
         path: 'product',

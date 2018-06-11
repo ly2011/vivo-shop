@@ -60,9 +60,12 @@ export default {
       this.right = this.list[index]
     },
     goDetails(id) {
-      console.log('====================================');
-      console.log('id: ', id);
-      console.log('====================================');
+      this.$router.push({
+        path: 'product',
+        query: {
+          id
+        }
+      });
     }
   }
 }
@@ -85,7 +88,7 @@ export default {
     height: 100%;
     background-color: #f6f6f6;
     margin-bottom: 1.51rem;
-    font-size: .35rem;
+    font-size: 0.35rem;
 
     li {
       height: 1.3rem;
@@ -108,8 +111,8 @@ export default {
       flex-direction: column;
       text-align: center;
       width: 33%;
-      margin-top: .3rem;
-      font-size: .34rem;
+      margin-top: 0.3rem;
+      font-size: 0.34rem;
       float: left;
 
       img {
@@ -120,7 +123,7 @@ export default {
 
       span {
         color: #999;
-        line-height: .9rem;
+        line-height: 0.9rem;
       }
     }
   }

@@ -154,6 +154,9 @@ export default {
     background-color: #fff;
     border-bottom: 1px solid #cecece;
 
+    .number {
+      display: none;
+    }
     .name {
       font-size: 0.5rem;
       font-weight: 400;
@@ -187,30 +190,7 @@ export default {
         height: auto;
       }
     }
-    .peizhi {
-      width: 90%;
-      margin: auto;
-      div {
-        margin-bottom: 0.5rem;
-        margin-top: 0.5rem;
-      }
-      h3 {
-        height: 2rem;
-        line-height: 2.3rem;
-        font-size: 0.5rem;
-        border-bottom: 1px solid #ccc;
-      }
-      span {
-        font-size: 0.38rem;
-        color: #888;
-        margin-top: 0.3rem;
-        display: block;
-      }
-      p {
-        height: 0.55rem;
-        color: #888;
-      }
-    }
+
   }
 
   .number-control {
@@ -225,6 +205,9 @@ export default {
     }
 
     .number-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 2.35rem;
       height: 0.78rem;
       line-height: 0.76rem;
@@ -249,10 +232,6 @@ export default {
       border-right: 1px solid #d1d1d1;
       outline: 0;
     }
-    .decrease,
-    .increase {
-    }
-
     .number {
       height: 100%;
       box-sizing: border-box;
