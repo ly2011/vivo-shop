@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+  padding-bottom: 1.45rem;
+}
 .floor {
   &__title {
     margin: 0;
