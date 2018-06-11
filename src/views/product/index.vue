@@ -58,7 +58,7 @@
 
           <div class="footer">
             <div class="left">
-              <div class="cart">
+              <div class="cart" @click="goCart">
                 <div class="cart-number">{{cartNumber}}</div>
                 <img src="http://p6563v2ck.bkt.clouddn.com/%E8%B4%AD%E7%89%A9%E8%BD%A6.png" alt="">
                 <span>购物车</span>
@@ -76,10 +76,10 @@
             </div>
             <div class="right">
               <div class="add">
-                <button>加入购物车</button>
+                <a @click="addCart(good)">加入购物车</a>
               </div>
               <div class="purchase">
-                <button>立即购买</button>
+                <a>立即购买</a>
               </div>
             </div>
           </div>
@@ -90,6 +90,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+import { Toast, MessageBox } from 'mint-ui';
 import { data } from '@/mock/ceshi.js';
 
 import DetailHeader from '@/components/header';
@@ -106,14 +108,21 @@ export default {
       cartNumber: 0
     };
   },
+  computed: {
+    ...mapGetters(['carts'])
+  },
   created() {
     const { id } = this.$route.query;
     if (id) {
       this.id = id;
       this.fetchData();
     }
+    if (this.carts) {
+      this.cartNumber = this.carts.length;
+    }
   },
   methods: {
+    ...mapActions(['setCart']),
     fetchData() {
       const { data: { home } } = data;
       const { data: { set } } = data;
@@ -124,6 +133,35 @@ export default {
         ...this.goodDetails,
         ...set.filter(item => item.id == this.id)
       ];
+    },
+    addCart(good) {
+      const idExist = this.carts.find(cart => {
+        return cart.id == good.id;
+      });
+      if (!idExist) {
+        const post_data = {
+          id: good.id,
+          name: good.homeName,
+          price: good.homePrice,
+          value: good.homeValue,
+          img: good.homeImg,
+          danx1uan: ''
+        };
+        this.setCart(post_data);
+        this.cartNumber = this.carts.length;
+        Toast({
+          message: '加入购物车成功！',
+          iconClass: 'iconfont icon-goumaichenggong-copy',
+          duration: 950
+        });
+      } else {
+        MessageBox('提示', '商品已存在购物车');
+      }
+    },
+    goCart() {
+      this.$router.push({
+        path: '/cart'
+      });
     }
   }
 };
@@ -190,7 +228,6 @@ export default {
         height: auto;
       }
     }
-
   }
 
   .number-control {
@@ -278,6 +315,19 @@ export default {
         }
       }
 
+      .cart-number {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 1px;
+        left: 30px;
+        background: #f81301;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 15px;
+        color: #fff;
+      }
+
       .collection {
         width: 33%;
         height: 100%;
@@ -311,26 +361,28 @@ export default {
 
       .add,
       .purchase {
-        button {
+        a {
+          float: left;
           display: block;
           width: 50%;
           height: 1.2rem;
           line-height: 1.2rem;
           color: #fff;
           font-size: 0.35rem;
+          text-align: center;
           border: 0;
           outline: 0;
         }
       }
 
       .add {
-        button {
+        a {
           background-color: #ff9800;
         }
       }
 
       .purchase {
-        button {
+        a {
           background-color: #e3211e;
         }
       }

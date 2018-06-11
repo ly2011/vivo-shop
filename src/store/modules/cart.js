@@ -11,10 +11,10 @@ const cart = {
     [types.DEL_CARTS](state, index) {
       state.carts.splice(index, 1);
     },
-    [types.DECREASE_CARTS](state, index) {
+    [types.INCREASE_CARTS](state, index) {
       state.carts[index].value++;
     },
-    [types.INCREASE_CARTS](state, index) {
+    [types.DECREASE_CARTS](state, index) {
       state.carts[index].value == 1
         ? (state.carts[index].value = 1)
         : state.carts[index].value--;
