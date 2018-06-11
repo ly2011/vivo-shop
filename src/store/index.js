@@ -4,6 +4,7 @@ import VuexPersistence from 'vuex-persist';
 import { VUEX_KEY } from '@/config';
 import app from './modules/app';
 import address from './modules/address';
+import cart from './modules/cart';
 import getters from './getters';
 
 Vue.use(Vuex);
@@ -15,7 +16,8 @@ const vuexLocal = new VuexPersistence({
 const store = new Vuex.Store({
   modules: {
     app,
-    address
+    address,
+    cart
   },
   getters,
   plugins: [vuexLocal.plugin]
