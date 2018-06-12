@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { data } from '../../mock/ceshi.js';
+import { data } from '@/mock/ceshi.js';
 
 import NewsHeader from './components/news-header'
 import NewsContainer from './components/news-container'
@@ -36,5 +36,4 @@ export default {
 </script>
 
 <style>
-
 </style>

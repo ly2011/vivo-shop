@@ -79,7 +79,7 @@
                 <a @click="addCart(good)">加入购物车</a>
               </div>
               <div class="purchase">
-                <a>立即购买</a>
+                <a @click="toPay(good.id, good.homeValue)">立即购买</a>
               </div>
             </div>
           </div>
@@ -162,6 +162,15 @@ export default {
       this.$router.push({
         path: '/cart'
       });
+    },
+    toPay(id, value) {
+      this.$router.push({
+        path: 'pay',
+        query: {
+          id,
+          value
+        }
+      })
     }
   }
 };
