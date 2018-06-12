@@ -62,6 +62,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import {Toast} from 'mint-ui'
 import CartHeader from '@/components/header';
 export default {
   components: {
@@ -91,7 +92,8 @@ export default {
         }
       });
       return sumValue;
-    }
+    },
+
   },
   methods: {
     ...mapActions([
@@ -104,6 +106,8 @@ export default {
       cart.danx1uan = !cart.danx1uan;
       if (!cart.danx1uan) {
         this.qx = false;
+      } else {
+        this.qx = this.carts.every(cart => cart.danx1uan === true)
       }
     },
     checkAll() {
@@ -128,7 +132,17 @@ export default {
       this.increaseCart(index);
     },
     settlement() {
-      this.settlementCart();
+      const post_data = this.carts.filter(cart => {
+        return cart.danx1uan
+      });
+      if(post_data.length < 1) {
+        Toast({
+          message: '请选择商品',
+          duration: 1000
+        });
+        return false;
+      }
+      this.settlementCart(post_data);
     }
   }
 };
@@ -211,13 +225,14 @@ export default {
       .decrease,
       .increase {
         float: left;
-        width: 0.75rem;
-        height: 0.75rem;
-        line-height: 0.75rem;
+        width: 0.76rem;
+        height: 0.76rem;
+        line-height: 0.76rem;
         border: 1px solid #dedede;
         color: #b2b2b2;
         font-size: 0.5rem;
         outline: 0;
+        text-align: center;
       }
       input {
         float: left;

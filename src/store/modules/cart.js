@@ -6,10 +6,14 @@ const cart = {
   },
   mutations: {
     [types.SET_CARTS](state, data) {
-      state.carts.push(data);
+      state
+        .carts
+        .push(data);
     },
     [types.DEL_CARTS](state, index) {
-      state.carts.splice(index, 1);
+      state
+        .carts
+        .splice(index, 1);
     },
     [types.INCREASE_CARTS](state, index) {
       state.carts[index].value++;
@@ -19,25 +23,44 @@ const cart = {
         ? (state.carts[index].value = 1)
         : state.carts[index].value--;
     },
-    [types.SETTLEMENT_CARTS](state) {
-      state.carts = [];
+    [types.SETTLEMENT_CARTS](state, data) {
+      const idsArr = []
+      data.forEach(cart => {
+        idsArr.push(cart.id)
+      })
+      const tmp_carts = state
+        .carts
+        .filter(cart => {
+          return !idsArr.includes(cart.id)
+        })
+      state.carts = tmp_carts;
     }
   },
   actions: {
-    setCart({ commit }, data) {
+    setCart({
+      commit
+    }, data) {
       commit(types.SET_CARTS, data);
     },
-    deleteCart({ commit }, index) {
+    deleteCart({
+      commit
+    }, index) {
       commit(types.DEL_CARTS, index);
     },
-    decreaseCart({ commit }, index) {
+    decreaseCart({
+      commit
+    }, index) {
       commit(types.DECREASE_CARTS, index);
     },
-    increaseCart({ commit }, index) {
+    increaseCart({
+      commit
+    }, index) {
       commit(types.INCREASE_CARTS, index);
     },
-    settlementCart({ commit }) {
-      commit(types.SETTLEMENT_CARTS);
+    settlementCart({
+      commit
+    }, data = []) {
+      commit(types.SETTLEMENT_CARTS, data);
     }
   }
 };
