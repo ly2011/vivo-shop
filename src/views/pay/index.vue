@@ -13,16 +13,16 @@
     <div class="pay-shop" v-for="(list, index) in pay" :key="index">
       <div class="pay-shop-list">
         <p class="label">商品清单</p>
-        <div class="pay-shop-info">
+        <div class="pay-shop-logo-wrap">
           <img class="shop-logo" :src="list.homeImg" :alt="list.homeName">
-          <div class="pay-shop-desc">
-            <span class="name">
-              {{list.homeName}}
-              <p>x {{$route.query.value}}</p>
-            </span>
-            <span class="price">¥ {{list.homePrice}}</span>
-          </div>
+        </div>
 
+        <div class="pay-shop-desc">
+          <span class="name">
+            {{list.homeName}}
+            <p>× {{$route.query.value}}</p>
+          </span>
+          <span class="price">¥ {{list.homePrice}}</span>
         </div>
       </div>
 
@@ -74,7 +74,7 @@
 
 <script>
 import { Toast } from "mint-ui";
-// import { mapGetters, mapMutations } from "vuex";
+import { mapActions } from "vuex";
 import PayHeader from '@/components/header'
 import {sleep} from '@/utils/tool'
 import { data } from '@/mock/ceshi.js';
@@ -97,6 +97,7 @@ export default {
     this.fetchData();
   },
   methods: {
+    ...mapActions(['setOrders']),
     fetchData() {
       const {id} = this.$route.query
       const { data: { home } } = data;
@@ -130,9 +131,7 @@ export default {
         listname: this.payTypes[index].name,
         value: this.$route.query.value
       }
-      console.log('====================================');
-      console.log(post_data);
-      console.log('====================================');
+      this.setOrders(post_data)
       await sleep(1000)
       this.$router.push({
         path: 'success'
@@ -194,36 +193,35 @@ export default {
     margin-top: 0.3rem;
     background-color: #fff;
 
-    .pay-shop-info {
+    .pay-shop-logo-wrap {
       float: left;
-
       .shop-logo {
         width: 2.5rem;
         margin: 0.2rem;
       }
+    }
 
-      .pay-shop-desc {
-        width: 70%;
-        display: flex;
-        flex-direction: column;
+    .pay-shop-desc {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
 
-        .name {
-          font-size: 0.4rem;
-          margin-top: 0.3rem;
-          height: 0.6rem;
+      .name {
+        font-size: 0.4rem;
+        margin-top: 0.3rem;
+        height: 0.6rem;
 
-          p {
-            float: right;
-            margin-right: 0.5rem;
-          }
+        p {
+          float: right;
+          margin-right: 0.5rem;
         }
+      }
 
-        .price {
-          height: 0.6rem;
-          color: red;
-          font-size: 0.35rem;
-          font-weight: 500;
-        }
+      .price {
+        height: 0.6rem;
+        color: red;
+        font-size: 0.35rem;
+        font-weight: 500;
       }
     }
   }
@@ -236,8 +234,10 @@ export default {
     margin-top: 10px;
 
     .pay-invoice {
-      width: 100%;
-      height: 4rem;
+      width: 92%;
+      height: 70%;
+      margin: 0 auto;
+      // height: 4rem;
 
       font-size: 0.35rem;
 

@@ -99,6 +99,14 @@ const routes = [
     meta: {
       title: '结算'
     }
+  },
+  {
+    path: '/success',
+    name: 'success',
+    component: () => import('@/components/success.vue'),
+    meta: {
+      title: '结算'
+    }
   }
 ];
 

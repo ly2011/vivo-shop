@@ -30,9 +30,9 @@
           <div class="number-control">
             <h2 class="label">购买数量：</h2>
             <div class="number-container">
-              <button class="decrease">-</button>
+              <button class="decrease" @click="decrease(index)">-</button>
               <input class="number" type="text" v-model="good.homeValue" readonly="readonly">
-              <button class="increase">+</button>
+              <button class="increase" @click="increase(index)">+</button>
             </div>
           </div>
 
@@ -171,7 +171,17 @@ export default {
           value
         }
       })
-    }
+    },
+    decrease(index) {
+      if (this.goodDetails[index].homeValue == 1) {
+        this.goodDetails[index].homeValue = 1;
+      } else {
+        this.goodDetails[index].homeValue--;
+      }
+    },
+    increase(index) {
+      this.goodDetails[index].homeValue++
+    },
   }
 };
 </script>
