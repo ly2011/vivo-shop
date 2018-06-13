@@ -6,6 +6,7 @@ import app from './modules/app';
 import address from './modules/address';
 import cart from './modules/cart';
 import order from './modules/order'
+import collections from './modules/collections'
 import getters from './getters';
 
 Vue.use(Vuex);
@@ -16,7 +17,8 @@ const store = new Vuex.Store({
     app,
     address,
     cart,
-    order
+    order,
+    collections
   },
   getters,
   plugins: [vuexLocal.plugin]

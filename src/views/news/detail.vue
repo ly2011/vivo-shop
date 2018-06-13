@@ -8,7 +8,7 @@
           <i class="iconfont icon-dianzan"></i>
           <span>1</span>
         </div>
-        <div class="collection" @click="collection(detail)">
+        <div class="collection" @click="addCollection(detail)">
           <i class="iconfont icon-praise" v-show="!detail.sc"></i>
           <i class="iconfont icon-praise" v-show="detail.sc" style="color: red"></i>
           <span>收藏</span>
@@ -20,8 +20,10 @@
 
 <script>
 import {Toast} from 'mint-ui'
+import {mapGetters, mapActions} from 'vuex'
 
 import { data } from '@/mock/ceshi.js';
+import {CurentTime} from '@/utils/tool'
 
 import DetailHeader from '@/components/header'
 export default {
@@ -34,6 +36,9 @@ export default {
       detail: {}
     }
   },
+  computed: {
+    ...mapGetters(['article'])
+  },
   created() {
     const {id} = this.$route.query;
     if(id) {
@@ -44,15 +49,35 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['addArticle']),
     fetchData() {
       const {data: {news}} = data
       this.detail = news.find(item => item.id == this.id)
       console.log('news: ', this.detail);
     },
-    collection(list) {
-      console.log('====================================');
-      console.log('list: ', list);
-      console.log('====================================');
+    addCollection(list) {
+      const idExist = this.article.find(data => {
+        return data.id == list.id;
+      });
+      if(idExist) {
+          Toast({
+            message: "您已经收藏过了",
+            duration: 950
+          });
+        return false
+      }
+
+      const post_data = {
+        id: list.id,
+        title: list.newsTitle,
+        newsCon:list.newsCon,
+        currentdate: CurentTime()
+      };
+      Toast({
+        message: "收藏成功",
+        duration: 950
+      });
+      this.addArticle(post_data)
     }
   }
 }
@@ -60,7 +85,6 @@ export default {
 
 <style lang="scss" scoped>
 .detail {
-
   &__item {
     background-color: #fff;
   }
@@ -83,7 +107,8 @@ export default {
     justify-content: center;
     color: #25b5fe;
 
-    .stars, .collection {
+    .stars,
+    .collection {
       display: flex;
       justify-content: center;
       width: 3rem;
@@ -91,13 +116,13 @@ export default {
       line-height: 1rem;
       border: 1px solid #25b5fe;
       border-radius: 30px;
-      margin: auto .3rem;
+      margin: auto 0.3rem;
       text-align: center;
       float: left;
 
       span {
         padding-left: 0.1rem;
-        font-size: .36rem;
+        font-size: 0.36rem;
       }
     }
   }

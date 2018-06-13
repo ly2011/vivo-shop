@@ -64,7 +64,7 @@
                 <span>购物车</span>
               </div>
               <div class="collection">
-                <div class="collection-box">
+                <div class="collection-box" @click="addCollection(good)">
                   <i class="iconfont icon-collection"></i>
                   <span>收藏</span>
                 </div>
@@ -109,7 +109,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['carts'])
+    ...mapGetters(['carts', 'collections'])
   },
   created() {
     const { id } = this.$route.query;
@@ -122,7 +122,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['setCart']),
+    ...mapActions(['setCart', 'addGoods']),
     fetchData() {
       const { data: { home } } = data;
       const { data: { set } } = data;
@@ -182,6 +182,29 @@ export default {
     increase(index) {
       this.goodDetails[index].homeValue++
     },
+    addCollection(good) {
+      const idExist = this.collections.find(item => {
+        return item.id == good.id
+      })
+      if(idExist) {
+        Toast({
+          message: "您已经收藏过了",
+          duration: 950
+        });
+        return false
+      }
+      const post_data = {
+        id: good.id,
+        img: good.homeImg,
+        name: good.homeName,
+        price: good.homePrice
+      }
+      Toast({
+        message: "收藏成功",
+        duration: 950
+      });
+      this.addGoods(post_data)
+    }
   }
 };
 </script>

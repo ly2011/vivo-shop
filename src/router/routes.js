@@ -116,6 +116,13 @@ const routes = [
     meta: {
       title: '选购配件'
     }
+  }, {
+    path: '/my-collection',
+    name: 'my-collection',
+    component: _import('my/my-collection'),
+    meta: {
+      title: '我的收藏'
+    }
   }
 ];
 
