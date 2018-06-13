@@ -79,17 +79,17 @@ export default {
       this.nowIndex = index;
     },
     goDetail(list){
-      const post_data = {
-        id: list.id,
-        text: list.text,
-        ly: list.ly,
-        listname: list.listname,
-        value: list.value
-      }
-      this.setOrderDetail(post_data);
+      // const post_data = {
+      //   id: list.id,
+      //   text: list.text,
+      //   ly: list.ly,
+      //   listname: list.listname,
+      //   value: list.value
+      // }
+      this.setOrderDetail(list);
       this.$router.push({
         path: '/order/detail',
-        query: post_data
+        query: {id: list.id}
       })
     },
     delOrder(index){

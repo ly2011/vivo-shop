@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import axios from 'axios';
-// import './utils/rem';
 import 'amfe-flexible';
 import App from './App.vue';
 import router from './router';
