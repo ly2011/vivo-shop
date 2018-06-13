@@ -102,6 +102,20 @@ const routes = [
     meta: {
       title: '结算'
     }
+  }, {
+    path: '/choose',
+    name: 'choose',
+    component: _import('choose/index'),
+    meta: {
+      title: '选购手机'
+    }
+  }, {
+    path: '/parts',
+    name: 'parts',
+    component: _import('parts/index'),
+    meta: {
+      title: '选购配件'
+    }
   }
 ];
 

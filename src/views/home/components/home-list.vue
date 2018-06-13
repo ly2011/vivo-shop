@@ -20,8 +20,16 @@
 <script>
 export default {
   methods: {
-    xuangou() {},
-    parts() {},
+    xuangou() {
+      this.$router.push({
+        path: 'choose'
+      })
+    },
+    parts() {
+      this.$router.push({
+        path: 'parts'
+      })
+    },
     todo() {}
   }
 };
